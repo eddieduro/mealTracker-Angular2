@@ -9,7 +9,7 @@ import { Meal } from './meal.model';
   directives: [MealListComponent],
   template: `
   <div class="container-fluid">
-  	<h1>MealTrkr</h1>
+  	<h1 class='text-center'>MealTrkr</h1>
     <meal-list
     [mealList]="meals"
     (onMealSelect)="mealWasSelected($event)">

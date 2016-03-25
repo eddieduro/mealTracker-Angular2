@@ -5,7 +5,7 @@ import { Meal } from './meal.model';
   selector:'edit-meal',
   inputs: ['meal'],
   template:`
-    <div class="meal-form form container">
+    <div class="meal-form form col-md-6">
       <h3>Edit {{meal.name}}: </h3>
       <div class="row">
         <label for='name'>Meal:</label>

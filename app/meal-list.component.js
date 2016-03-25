@@ -56,6 +56,7 @@ System.register(['angular2/core', './meal.component', './meal.model', './new-mea
                     this.newMealFormVisible = false;
                 };
                 MealListComponent.prototype.noActiveMeals = function () {
+                    console.log('yo');
                     this.active = false;
                 };
                 MealListComponent = __decorate([
@@ -63,7 +64,7 @@ System.register(['angular2/core', './meal.component', './meal.model', './new-mea
                         selector: 'meal-list',
                         inputs: ['mealList'],
                         directives: [meal_component_1.MealComponent, new_meal_component_1.NewMealComponent, edit_meal_component_1.EditMealComponent],
-                        template: "\n  <div (click)='noActiveMeals()'>\n    <meal-display *ngFor=\"#currentMeal of mealList\"\n    (click)=\"mealClicked(currentMeal)\"\n    [class.selected]='currentMeal === selectedMeal'\n    [meal]='currentMeal'>\n    </meal-display>\n      <div *ngIf='selectedMeal'>\n        <h3>Food: {{ selectedMeal.name }}</h3>\n        <h3>Details: {{ selectedMeal.details }}</h3>\n        <h3>Calories: {{ selectedMeal.calories }}</h3>\n        <edit-meal [meal]='selectedMeal'></edit-meal>\n      </div>\n    <div *ngIf='newMealFormVisible'>\n    <button (click)='hideNewMealFormButton()'>Hide Form</button>\n      <new-meal (onNewMealSubmit)=\"createMeal($event)\"></new-meal>\n    </div>\n    <div *ngIf='!newMealFormVisible'>\n      <button (click)='displayNewMealFormButton()'>Show Form</button>\n    </div>\n  </div>\n  "
+                        template: "\n  <div class='row'>\n    <meal-display *ngFor=\"#currentMeal of mealList\"\n    (click)=\"mealClicked(currentMeal)\"\n    [class.selected]='currentMeal === selectedMeal'\n    [meal]='currentMeal' class='col-md-8'>\n    </meal-display>\n    <div *ngIf='selectedMeal' class='col-md-4 right-col'>\n      <h3>Food: {{ selectedMeal.name }}</h3>\n      <h3>Details: {{ selectedMeal.details }}</h3>\n      <h3>Calories: {{ selectedMeal.calories }}</h3>\n    </div>\n  </div>\n  <div class='row'>\n    <div *ngIf='newMealFormVisible' class='col-md-6'>\n    <button (click)='hideNewMealFormButton()' class='btn btn-reveal'>Hide Form</button>\n      <new-meal (onNewMealSubmit)=\"createMeal($event)\"></new-meal>\n    </div>\n    <div *ngIf='!newMealFormVisible' class='col-md-6'>\n      <button (click)='displayNewMealFormButton()' class='btn btn-reveal'>Show Form</button>\n    </div>\n    <div *ngIf='selectedMeal' class='col-md-6'>\n      <edit-meal [meal]='selectedMeal'></edit-meal>\n    </div>\n  </div>\n  "
                     }), 
                     __metadata('design:paramtypes', [])
                 ], MealListComponent);
