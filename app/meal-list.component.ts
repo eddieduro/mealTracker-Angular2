@@ -9,18 +9,18 @@ import { EditMealComponent } from './edit-meal.component';
   inputs: ['mealList'],
   directives: [MealComponent, NewMealComponent, EditMealComponent],
   template:`
-  <div>
+  <div (click)='noActiveMeals()'>
     <meal-display *ngFor="#currentMeal of mealList"
     (click)="mealClicked(currentMeal)"
     [class.selected]='currentMeal === selectedMeal'
     [meal]='currentMeal'>
     </meal-display>
-    <div *ngIf='selectedMeal'>
-      <h3>Food: {{ selectedMeal.name }}</h3>
-      <h3>Details: {{ selectedMeal.details }}</h3>
-      <h3>Calories: {{ selectedMeal.calories }}</h3>
-      <edit-meal [meal]='selectedMeal'></edit-meal>
-    </div>
+      <div *ngIf='selectedMeal'>
+        <h3>Food: {{ selectedMeal.name }}</h3>
+        <h3>Details: {{ selectedMeal.details }}</h3>
+        <h3>Calories: {{ selectedMeal.calories }}</h3>
+        <edit-meal [meal]='selectedMeal'></edit-meal>
+      </div>
     <div *ngIf='newMealFormVisible'>
     <button (click)='hideNewMealFormButton()'>Hide Form</button>
       <new-meal (onNewMealSubmit)="createMeal($event)"></new-meal>
@@ -37,10 +37,12 @@ export class MealListComponent {
   public selectedMeal: Meal;
   public onMealSelect: EventEmitter<Meal>;
   public newMealFormVisible: boolean = false;
+  public active: boolean = false;
   constructor(){
     this.onMealSelect = new EventEmitter();
   }
   mealClicked(clickedMeal: Meal): void {
+    this.active = true;
     this.selectedMeal = clickedMeal;
     this.onMealSelect.emit(clickedMeal);
   }
@@ -57,5 +59,8 @@ export class MealListComponent {
   }
   hideNewMealFormButton(){
     this.newMealFormVisible = false;
+  }
+  noActiveMeals(){
+    this.active = false;
   }
 }
