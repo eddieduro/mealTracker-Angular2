@@ -1,4 +1,4 @@
-System.register(['angular2/core', './meal.component', './new-meal.component'], function(exports_1, context_1) {
+System.register(['angular2/core', './meal.component', './meal.model', './new-meal.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', './meal.component', './new-meal.component'], f
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, meal_component_1, new_meal_component_1;
+    var core_1, meal_component_1, meal_model_1, new_meal_component_1;
     var MealListComponent;
     return {
         setters:[
@@ -19,6 +19,9 @@ System.register(['angular2/core', './meal.component', './new-meal.component'], f
             },
             function (meal_component_1_1) {
                 meal_component_1 = meal_component_1_1;
+            },
+            function (meal_model_1_1) {
+                meal_model_1 = meal_model_1_1;
             },
             function (new_meal_component_1_1) {
                 new_meal_component_1 = new_meal_component_1_1;
@@ -37,6 +40,7 @@ System.register(['angular2/core', './meal.component', './new-meal.component'], f
                     if (!name) {
                         alert("please enter in meal!");
                     }
+                    var newMeal = new meal_model_1.Meal([name, details, calories], this.mealList.length);
                     this.mealList.push(newMeal);
                 };
                 MealListComponent = __decorate([

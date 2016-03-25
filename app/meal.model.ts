@@ -5,5 +5,6 @@ export class Meal {
   constructor(public info: any[], public id: number ) {
     this.name = info[0];
     this.details = info[1];
+    this.calories = info[2];
   }
 }

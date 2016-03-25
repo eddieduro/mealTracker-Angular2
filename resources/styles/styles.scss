@@ -7,8 +7,10 @@ $light_color: #3d3d3d;
   color: blue;
 }
 body{
-
   background-color: $light_color;
+  h1,h2,h3 {
+    color: white;
+  }
 }
 .form {
     display: table;

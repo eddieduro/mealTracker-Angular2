@@ -21,9 +21,9 @@ export class AppComponent {
   public meals: Meal[];
   constructor(){
     this.meals = [
-      new Meal(["Taco", "I ate 10", 1023], 0),
-      new Meal(["Burrito", "California BURRRRITO",  40], 1),
-      new Meal(["Korean BBQ", "I only had 5 plates", 1501], 2)
+      new Meal(["Taco", "I ate 10", '1023'], 0),
+      new Meal(["Burrito", "California BURRRRITO",  '40'], 1),
+      new Meal(["Korean BBQ", "I only had 5 plates", '1501'], 2)
     ];
   }
   mealWasSelected(clickedMeal: Meal): void {

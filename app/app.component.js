@@ -27,9 +27,9 @@ System.register(['angular2/core', './meal-list.component', './meal.model'], func
             AppComponent = (function () {
                 function AppComponent() {
                     this.meals = [
-                        new meal_model_1.Meal(["Taco", "I ate 10", 1023], 0),
-                        new meal_model_1.Meal(["Burrito", "California BURRRRITO", 40], 1),
-                        new meal_model_1.Meal(["Korean BBQ", "I only had 5 plates", 1501], 2)
+                        new meal_model_1.Meal(["Taco", "I ate 10", '1023'], 0),
+                        new meal_model_1.Meal(["Burrito", "California BURRRRITO", '40'], 1),
+                        new meal_model_1.Meal(["Korean BBQ", "I only had 5 plates", '1501'], 2)
                     ];
                 }
                 AppComponent.prototype.mealWasSelected = function (clickedMeal) {

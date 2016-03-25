@@ -41,7 +41,8 @@ export class MealListComponent {
     if(!name) {
       alert("please enter in meal!");
     }
-    
+
+    var newMeal: Meal = new Meal([name, details, calories], this.mealList.length);
     this.mealList.push(newMeal);
   }
 }

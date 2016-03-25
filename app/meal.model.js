@@ -11,6 +11,7 @@ System.register([], function(exports_1, context_1) {
                     this.id = id;
                     this.name = info[0];
                     this.details = info[1];
+                    this.calories = info[2];
                 }
                 return Meal;
             }());
