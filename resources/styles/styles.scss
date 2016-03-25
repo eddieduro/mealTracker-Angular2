@@ -6,6 +6,9 @@ $light_color: #3d3d3d;
   background-color: #CFD8DC;
   color: blue;
 }
+.reveal {
+  background-color: red;
+}
 body{
   background-color: $light_color;
   h1,h2,h3 {

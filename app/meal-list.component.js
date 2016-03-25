@@ -1,4 +1,4 @@
-System.register(['angular2/core', './meal.component', './meal.model', './new-meal.component'], function(exports_1, context_1) {
+System.register(['angular2/core', './meal.component', './meal.model', './new-meal.component', './edit-meal.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', './meal.component', './meal.model', './new-mea
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, meal_component_1, meal_model_1, new_meal_component_1;
+    var core_1, meal_component_1, meal_model_1, new_meal_component_1, edit_meal_component_1;
     var MealListComponent;
     return {
         setters:[
@@ -25,10 +25,14 @@ System.register(['angular2/core', './meal.component', './meal.model', './new-mea
             },
             function (new_meal_component_1_1) {
                 new_meal_component_1 = new_meal_component_1_1;
+            },
+            function (edit_meal_component_1_1) {
+                edit_meal_component_1 = edit_meal_component_1_1;
             }],
         execute: function() {
             MealListComponent = (function () {
                 function MealListComponent() {
+                    this.newMealFormVisible = false;
                     this.onMealSelect = new core_1.EventEmitter();
                 }
                 MealListComponent.prototype.mealClicked = function (clickedMeal) {
@@ -43,12 +47,18 @@ System.register(['angular2/core', './meal.component', './meal.model', './new-mea
                     var newMeal = new meal_model_1.Meal([name, details, calories], this.mealList.length);
                     this.mealList.push(newMeal);
                 };
+                MealListComponent.prototype.displayNewMealFormButton = function () {
+                    this.newMealFormVisible = true;
+                };
+                MealListComponent.prototype.hideNewMealFormButton = function () {
+                    this.newMealFormVisible = false;
+                };
                 MealListComponent = __decorate([
                     core_1.Component({
                         selector: 'meal-list',
                         inputs: ['mealList'],
-                        directives: [meal_component_1.MealComponent, new_meal_component_1.NewMealComponent],
-                        template: "\n  <div>\n    <meal-display *ngFor=\"#currentMeal of mealList\"\n    (click)=\"mealClicked(currentMeal)\"\n    [class.selected]='currentMeal === selectedMeal'\n    [meal]='currentMeal'>\n    </meal-display>\n    <div *ngIf='selectedMeal'>\n      <h3>Food: {{ selectedMeal.name }}</h3>\n      <h3>Details: {{ selectedMeal.details }}</h3>\n      <h3>Calories: {{ selectedMeal.calories }}</h3>\n    </div>\n    <div>\n    <new-meal (onNewMealSubmit)=\"createMeal($event)\"></new-meal>\n    </div>\n  </div>\n  "
+                        directives: [meal_component_1.MealComponent, new_meal_component_1.NewMealComponent, edit_meal_component_1.EditMealComponent],
+                        template: "\n  <div>\n    <meal-display *ngFor=\"#currentMeal of mealList\"\n    (click)=\"mealClicked(currentMeal)\"\n    [class.selected]='currentMeal === selectedMeal'\n    [meal]='currentMeal'>\n    </meal-display>\n    <div *ngIf='selectedMeal'>\n      <h3>Food: {{ selectedMeal.name }}</h3>\n      <h3>Details: {{ selectedMeal.details }}</h3>\n      <h3>Calories: {{ selectedMeal.calories }}</h3>\n      <edit-meal [meal]='selectedMeal'></edit-meal>\n    </div>\n    <div *ngIf='newMealFormVisible'>\n    <button (click)='hideNewMealFormButton()'>Hide Form</button>\n      <new-meal (onNewMealSubmit)=\"createMeal($event)\"></new-meal>\n    </div>\n    <div *ngIf='!newMealFormVisible'>\n      <button (click)='displayNewMealFormButton()'>Show Form</button>\n    </div>\n  </div>\n  "
                     }), 
                     __metadata('design:paramtypes', [])
                 ], MealListComponent);

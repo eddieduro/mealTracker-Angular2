@@ -1,6 +1,6 @@
 import { Component, EventEmitter } from 'angular2/core';
 import { Meal } from './meal.model';
-import * as _ from 'lodash';
+
 
 @Component({
   selector: 'new-meal',
