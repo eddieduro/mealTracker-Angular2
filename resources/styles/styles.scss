@@ -4,7 +4,6 @@ $light_color: #3d3d3d;
 
 .selected {
   background-color: rgba(207,216,220,0.7);
-
 }
 body{
   background-color: $light_color;
@@ -15,7 +14,7 @@ body{
 .form {
     display: table;
     margin: 80px;
-    margin-left: auto;
+    margin-left: -100px;
     margin-right: auto;
     padding-left: 120px;
     span{
@@ -93,11 +92,20 @@ body{
   }
 }
 .btn-reveal{
-  float: left;
+  opacity: 0;
+}
+
+.contain {
+  margin-left: 100px;
+  .meal{
+    transform: translateX(-650px);
+  }
+
 }
 
 .right-col {
   margin-top: -100px;
+  padding-right: 50px;
 }
 
 .fullscreen-bg {

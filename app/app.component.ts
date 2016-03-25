@@ -8,7 +8,7 @@ import { Meal } from './meal.model';
   selector: 'my-app',
   directives: [MealListComponent],
   template: `
-  <div class="container-fluid">
+  <div class="container">
   	<h1 class='text-center'>MealTrkr</h1>
     <meal-list
     [mealList]="meals"

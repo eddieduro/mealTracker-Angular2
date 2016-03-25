@@ -2,6 +2,7 @@
   <head>
     <title>Start</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.2/TweenMax.min.js'></script>
     <script src="build/js/vendor.min.js"></script>
     <link rel="stylesheet" href="build/css/vendor.css">
     <!-- 1. Load libraries -->
@@ -30,6 +31,17 @@
   </body>
   <!-- 2. Configure SystemJS -->
   <script>
+    window.onload = function() {
+      TweenMax.staggerTo('.meal', 2, {x:'0',
+                                      ease: Power3.easeOut,
+                                      onComplete: stagComplete
+      }, 0.2);
+      function stagComplete(){
+        TweenLite.to('.btn-reveal', 1, {opacity: 1,
+                                        ease: Power3.easeOut
+      });
+      }
+    }
     System.config({
       packages: {
         app: {
