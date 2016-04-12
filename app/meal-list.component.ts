@@ -3,15 +3,23 @@ import { MealComponent } from './meal.component';
 import { Meal } from './meal.model';
 import { NewMealComponent } from './new-meal.component';
 import { EditMealComponent } from './edit-meal.component';
+import { CaloriesPipe } from './calories.pipe';
 
 @Component({
   selector: 'meal-list',
   inputs: ['mealList'],
+  pipes: [CaloriesPipe],
   directives: [MealComponent, NewMealComponent, EditMealComponent],
   template:`
   <div class='contain'>
     <div class='row'>
-      <meal-display *ngFor="#currentMeal of mealList; #i = index"
+      <select (change)="caloriesChange($event.target.value)" class="filter">
+        <option value="">Show All</option>
+        <option value="high">High Calorie Foods (over 300)</option>
+        <option value="low">Low Calorie Foods (under 300)</option>
+      </select>
+      <br>
+      <meal-display *ngFor="#currentMeal of mealList | calories:filterCalories"
       (click)="mealClicked(currentMeal)"
       [class.selected]='currentMeal === selectedMeal'
       [meal]='currentMeal' class='col-md-8 meal'>
@@ -44,6 +52,7 @@ export class MealListComponent {
   public onMealSelect: EventEmitter<Meal>;
   public newMealFormVisible: boolean = false;
   public active: boolean = false;
+  public filterCalories: string = "all";
   constructor(){
     this.onMealSelect = new EventEmitter();
   }
@@ -67,7 +76,9 @@ export class MealListComponent {
     this.newMealFormVisible = false;
   }
   noActiveMeals(){
-    console.log('yo');
     this.active = false;
+  }
+  caloriesChange(filterOption) {
+    this.filterCalories = filterOption;
   }
 }
